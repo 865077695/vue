@@ -1,4 +1,1 @@
-﻿# 忽略node_modules文件夹
-node_modules/# 忽略.idea文件夹，该文件夹为webstorm自动生成的log文件
-.idea/# 忽略test文件夹，该文件夹为测试文件
-test/
+﻿# 忽略node_modules文件夹node_modules/# 忽略.idea文件夹，该文件夹为webstorm自动生成的log文件.idea/# 忽略test文件夹，该文件夹为测试文件test/
