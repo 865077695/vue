@@ -1,1 +1,4 @@
-.idea/node_modules/atest/
+.idea/
+node_modules/
+atest/
+my-project/node_modules/
