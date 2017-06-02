@@ -1,4 +1,4 @@
 .idea/
 node_modules/
-atest/
+#atest/
 my-project/node_modules/
