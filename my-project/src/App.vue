@@ -1,23 +1,24 @@
 <template>
   <div id="app">
+    <tab>
+      <tab-item selected><router-link to="/">首页</router-link></tab-item>
+      <tab-item><router-link to="/page1">page1</router-link></tab-item>
+      <tab-item><router-link to="hello">hello</router-link></tab-item>
+    </tab>
     <img src="./assets/logo.png">
-    <p>
-      <router-link to="/hello">hello</router-link>
-      <router-link to="/page1">page1</router-link>
-      <router-link to="/">首页</router-link>
-    </p>
     <loading v-model="isLoading" loading="false"></loading>
     <p @click="do0">{{message}}</p>
     <p @click="getData">getData</p>
-    <router-view></router-view>
+    <router-view>as</router-view>
   </div>
 </template>
 
 <script>
-  import {Loading} from 'vux'
   //  import {mapState} from 'vuex'
   import store from './store.js'
-
+  // vux
+  import { Tab, TabItem, Loading } from 'vux'
+  
   export default {
     name: 'app',
     store,
@@ -27,7 +28,7 @@
       }
     },
     components: {
-      Loading
+      Tab, TabItem, Loading
     },
     computed: {
       isLoading () {
@@ -50,7 +51,7 @@
 <style lang="less">
   // 引入初始化样式
   @import '~vux/src/styles/reset.less';
-
+  
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -59,7 +60,7 @@
     color: #2c3e50;
     margin-top: 60px;
   }
-
+  
   a {
     text-decoration: none;
   }
