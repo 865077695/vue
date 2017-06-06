@@ -1,9 +1,12 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <p><router-link to="/hello">hello</router-link></p>
-    <p><router-link to="/page1">page1</router-link></p>
-    <p><router-link to="/">首页</router-link></p>
+    <p>
+      <router-link to="/hello">hello</router-link>
+      <router-link to="/page1">page1</router-link>
+      <router-link to="/">首页</router-link>
+    </p>
+    <loading v-model="isLoading" loading="false"></loading>
     <p @click="do0">{{message}}</p>
     <p @click="getData">getData</p>
     <router-view></router-view>
@@ -11,11 +14,24 @@
 </template>
 
 <script>
+  import {Loading} from 'vux'
+  //  import {mapState} from 'vuex'
+  import store from './store.js'
+
   export default {
     name: 'app',
+    store,
     data () {
       return {
         message: 'this is components app'
+      }
+    },
+    components: {
+      Loading
+    },
+    computed: {
+      isLoading () {
+        return this.$store.state.isLoading
       }
     },
     methods: {
@@ -24,7 +40,6 @@
       },
       getData: function () {
         console.log(this.$http)
-//        console.log(axios)
       }
     },
     created: function () {
@@ -32,8 +47,10 @@
     }
   }
 </script>
+<style lang="less">
+  // 引入初始化样式
+  @import '~vux/src/styles/reset.less';
 
-<style>
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -41,5 +58,9 @@
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
+  }
+
+  a {
+    text-decoration: none;
   }
 </style>

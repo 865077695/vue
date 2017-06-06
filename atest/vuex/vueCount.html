@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <p>{{ count }}</p>
+    <p>
+        <button @click="increment">+++</button>
+        <button @click="decrement">---</button>
+    </p>
+</div>
+<script src="src/vue.js"></script>
+<script src="src/vuex.js"></script>
+<script>
+    Vuex.mapState
+    const store = new Vuex.Store({
+        state: {
+            count: 0
+        },
+        // 在这里做状态变更，通过在组件里store.commit来触发
+        mutations: {
+            // 对象内方法的简写
+            increment(state,params){
+                return state.count++
+            },
+            decrement : state=>state.count--
+        }
+    })
+
+    new Vue({
+        el:'#app',
+        computed:{
+           count(){
+               return store.state.count
+           }
+        },
+//        computed:mapState(['count']),
+        store,
+        //actions
+        methods: {
+            // 注意这里不要使用箭头函数，this会出问题
+            increment(){
+                this.$store.commit('increment',10)
+            },
+            decrement(){
+                store.commit('decrement',123)
+            }
+        }
+    })
+</script>
+</body>
+</html>
