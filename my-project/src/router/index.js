@@ -2,9 +2,9 @@
 import Vue from 'vue'
 // 引入vue-router
 import Router from 'vue-router'
-// 引入Hello组件
+// 引入Home、Hello、page1组件
+import Home from '@/components/Home'
 import Hello from '@/components/Hello'
-// 引入page1组件
 import page1 from '@/components/page1'
 // 引入store
 import store from '@/store'
@@ -13,6 +13,13 @@ Vue.use(Router)
 
 const router = new Router({
   routes: [
+    // 设置任意路径时跳转至home
+    {path: '*', redirect: '/Home'},
+    {
+      path: '/Home',
+      name: 'Home',
+      component: Home
+    },
     {
       path: '/Hello',
       name: 'Hello',

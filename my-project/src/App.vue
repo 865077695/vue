@@ -1,34 +1,52 @@
 <template>
   <div id="app">
-    <tab>
-      <tab-item selected><router-link to="/">首页</router-link></tab-item>
-      <tab-item><router-link to="/page1">page1</router-link></tab-item>
-      <tab-item><router-link to="hello">hello</router-link></tab-item>
-    </tab>
     <img src="./assets/logo.png">
     <loading v-model="isLoading" loading="false"></loading>
     <p @click="do0">{{message}}</p>
     <p @click="getData">getData</p>
     <router-view>as</router-view>
+    <!--<group>-->
+    <!--<cell is-link title="Simple" link="/component/tabbar-simple"></cell>-->
+    <!--<cell is-link title="Switch icons" link="/component/tabbar-icon"></cell>-->
+    <!--</group>-->
+    <!--<div class="bottom-nav">-->
+    <tabbar>
+      <tabbar-item selected link="/Home">
+        <!--<img slot="icon" src="../assets/demo/icon_nav_button.png">-->
+        <span slot="label">首页</span>
+      </tabbar-item>
+      <tabbar-item show-dot link="/page1">
+        <!--<img slot="icon" src="../assets/demo/icon_nav_msg.png">-->
+        <span slot="label">页面1</span>
+      </tabbar-item>
+      <tabbar-item link="/Hello">
+        <!--<img slot="icon" src="../assets/demo/icon_nav_article.png">-->
+        <span slot="label">Hello页</span>
+      </tabbar-item>
+    </tabbar>
   </div>
+  <!--</div>-->
 </template>
 
 <script>
+  // 引入路由
+  import router from '@/router/index'
   //  import {mapState} from 'vuex'
   import store from './store.js'
   // vux
-  import { Tab, TabItem, Loading } from 'vux'
-  
+  import {Tabbar, TabbarItem, Loading} from 'vux'
+
   export default {
     name: 'app',
     store,
     data () {
       return {
-        message: 'this is components app'
+        message: 'this is components app',
+        color: 'red'
       }
     },
     components: {
-      Tab, TabItem, Loading
+      Tabbar, TabbarItem, Loading, router
     },
     computed: {
       isLoading () {
@@ -41,6 +59,9 @@
       },
       getData: function () {
         console.log(this.$http)
+      },
+      onItemClick: function (param) {
+        router.push({name: 'Home'})
       }
     },
     created: function () {
@@ -51,17 +72,23 @@
 <style lang="less">
   // 引入初始化样式
   @import '~vux/src/styles/reset.less';
-  
+
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    margin-top: 60px;
   }
-  
+
   a {
     text-decoration: none;
+  }
+
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
   }
 </style>
