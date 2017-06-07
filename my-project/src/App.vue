@@ -4,23 +4,25 @@
     <loading v-model="isLoading" loading="false"></loading>
     <p @click="do0">{{message}}</p>
     <p @click="getData">getData</p>
-    <router-view>as</router-view>
+    <router-view></router-view>
+    <i class="iconfont icon-iconac1"></i>
     <!--<group>-->
     <!--<cell is-link title="Simple" link="/component/tabbar-simple"></cell>-->
     <!--<cell is-link title="Switch icons" link="/component/tabbar-icon"></cell>-->
     <!--</group>-->
     <!--<div class="bottom-nav">-->
     <tabbar>
-      <tabbar-item selected link="/Home">
-        <!--<img slot="icon" src="../assets/demo/icon_nav_button.png">-->
+      <tabbar-item selected link="/Home" :icon-class="'iconfont icon-shouye'" badge="11">
+        <i slot="icon"></i>
         <span slot="label">首页</span>
       </tabbar-item>
-      <tabbar-item show-dot link="/page1">
-        <!--<img slot="icon" src="../assets/demo/icon_nav_msg.png">-->
+      <tabbar-item show-dot link="/page1" :icon-class="'iconfont icon-asd'" show-dot>
+        <i slot="icon"></i>
         <span slot="label">页面1</span>
       </tabbar-item>
-      <tabbar-item link="/Hello">
-        <!--<img slot="icon" src="../assets/demo/icon_nav_article.png">-->
+      <tabbar-item :icon-class="'iconfont icon-iconac1'" link="/Hello">
+        <i slot="icon"></i>
+        <!--<img slot="icon" src="./assets/1.png">-->
         <span slot="label">Hello页</span>
       </tabbar-item>
     </tabbar>
@@ -42,7 +44,9 @@
     data () {
       return {
         message: 'this is components app',
-        color: 'red'
+        color: 'red',
+        iconfont: true,
+        icon: true
       }
     },
     components: {
@@ -72,6 +76,7 @@
 <style lang="less">
   // 引入初始化样式
   @import '~vux/src/styles/reset.less';
+  @import './static/css/icon.css';
 
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -90,5 +95,10 @@
     bottom: 0;
     left: 0;
     width: 100%;
+  }
+
+  /*字体图标大小*/
+  .iconfont {
+    font-size: 24px;
   }
 </style>
