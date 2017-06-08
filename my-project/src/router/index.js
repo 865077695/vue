@@ -36,10 +36,10 @@ const router = new Router({
 router.beforeEach(function (to, from, next) {
   // 当路由开始之前，触发state的updateLoadingStatus，并传入参数isLoading
   store.commit('updateLoadingStatus', {isLoading: true})
-  console.log(1)
   next()
 })
 router.afterEach(function (to) {
-  store.commit('updateLoadingStatus', {isLoading: false})
+  console.log(to.name)
+  store.commit('updateLoadingStatus', {isLoading: false, title: to.name})
 })
 export default router
