@@ -31,7 +31,7 @@
 
       <div class="hot-class-items">
         <div class="panel" v-for="(panel,index) in panelList" :key="index">
-          <panel-l1 :title="panel.title" :price="panel.price">
+          <panel-l1 :title="panel.title" :src="panel.imgSrc" :price="panel.price">
             <img slot="img" :src="panel.imgSrc" alt="">
           </panel-l1>
         </div>
@@ -53,12 +53,12 @@
   ]
   // panel-l1数据
   const panelList = [
-    {imgSrc: './assets/img/banner.jpg', title: '2017中医执业/助理精讲特色班', price: 650},
-    {imgSrc: './assets/img/banner.jpg', title: '2017临床助理医师-1对1VIP保过班', price: 650},
-    {imgSrc: './assets/img/banner.jpg', title: '2017临床执业医师-1对1VIP保过班', price: 650},
-    {imgSrc: './assets/img/banner.jpg', title: '2017临床助理医师-实践技能班', price: 650},
-    {imgSrc: './assets/img/banner.jpg', title: 'title', price: 660},
-    {imgSrc: './assets/img/banner.jpg', title: 'title', price: 680}
+    {imgSrc: './static/img/banner.jpg', title: '2017中医执业/助理精讲特色班', price: 650},
+    {imgSrc: './static/img/banner.jpg', title: '2017临床助理医师-1对1VIP保过班', price: 650},
+    {imgSrc: './static/img/banner.jpg', title: '2017临床执业医师-1对1VIP保过班', price: 650},
+    {imgSrc: './static/img/banner.jpg', title: '2017临床助理医师-实践技能班', price: 650},
+    {imgSrc: './static/img/banner.jpg', title: 'title', price: 660},
+    {imgSrc: './static/img/banner.jpg', title: 'title', price: 680}
   ]
 
   export default {
