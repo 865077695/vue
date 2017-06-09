@@ -72,7 +72,7 @@
   /*引入初始化样式*/
   @import '~vux/src/styles/reset.less';
   /*引入阿里字体图标*/
-  @import '//at.alicdn.com/t/font_lxvq2c22dab2csor.css';
+  @import '//at.alicdn.com/t/font_479ynf1sb57b9.css';
 
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;

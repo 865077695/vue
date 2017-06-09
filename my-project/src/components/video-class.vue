@@ -4,11 +4,13 @@
       <panel-l2 :imgSrc="panel.imgSrc" :title="panel.title" :descp="panel.descp" :startTime="panel.startTime"
                 :endTime="panel.endTime" :price="panel.price" :number="panel.number"></panel-l2>
     </div>
+    <divider>到底了</divider>
   </div>
 </template>
 
 <script>
   import panelL2 from '@/components/cell/panel-l2'
+  import {Divider} from 'vux'
 
   const videoList = [
     {
@@ -83,14 +85,15 @@
         videoList: videoList
       }
     },
-    components: {panelL2}
+    components: {panelL2, Divider}
   }
 
 </script>
 
 <style scoped>
   .page1 {
-    background: #eee;padding:10px;
+    background: #eee;
+    padding: 10px;
   }
 
 </style>
