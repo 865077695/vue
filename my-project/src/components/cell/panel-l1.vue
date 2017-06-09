@@ -10,14 +10,9 @@
   export default {
     name: 'panel-l1',
     props: {
-      imgSrc: {
-        type: String
-      },
       title: {
-        type: String
-      },
-      price: {
-        type: Number
+        type: String,
+        required: true
       }
     }
   }

@@ -13,14 +13,18 @@
           <i slot="icon"></i>
           <span slot="label">首页</span>
         </tabbar-item>
-        <tabbar-item show-dot link="/page1" :icon-class="'iconfont icon-asd'" show-dot>
+        <tabbar-item show-dot link="/video-class" :icon-class="'iconfont icon-lesson'" show-dot>
           <i slot="icon"></i>
-          <span slot="label">页面1</span>
+          <span slot="label">课程</span>
         </tabbar-item>
-        <tabbar-item :icon-class="'iconfont icon-iconac1'" link="/Hello">
+        <tabbar-item show-dot link="/questions" :icon-class="'iconfont icon-tiku'" show-dot>
+          <i slot="icon"></i>
+          <span slot="label">题库</span>
+        </tabbar-item>
+        <tabbar-item :icon-class="'iconfont icon-my'" link="/my">
           <i slot="icon"></i>
           <!--<img slot="icon" src="./assets/1.png">-->
-          <span slot="label">Hello页</span>
+          <span slot="label">我的</span>
         </tabbar-item>
       </tabbar>
     </div>
@@ -68,20 +72,19 @@
   /*引入初始化样式*/
   @import '~vux/src/styles/reset.less';
   /*引入阿里字体图标*/
-  @import '//at.alicdn.com/t/font_mv7qnzmmafvcmcxr.css';
+  @import '//at.alicdn.com/t/font_lxvq2c22dab2csor.css';
 
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
     color: #2c3e50;
     padding-bottom: 50px;
   }
 
   .title {
     line-height: 2.5em;
-    background: #5e7a88;
+    background: #2dc37c;
     text-align: center;
     color: #fff;
   }

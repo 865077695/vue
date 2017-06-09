@@ -2,10 +2,11 @@
 import Vue from 'vue'
 // 引入vue-router
 import Router from 'vue-router'
-// 引入Home、Hello、page1组件
-import Home from '@/components/Home'
-import Hello from '@/components/Hello'
-import page1 from '@/components/page1'
+// 引入首页、课程、题库组件
+import Home from '@/components/Home'// shouye
+import my from '@/components/my-center'// wode
+import videoClass from '@/components/video-class'// kecheng
+import Questions from '@/components/questions'// tiku
 // 引入store
 import store from '@/store'
 
@@ -17,18 +18,23 @@ const router = new Router({
     {path: '*', redirect: '/Home'},
     {
       path: '/Home',
-      name: 'Home',
+      name: '首页',
       component: Home
     },
     {
-      path: '/Hello',
-      name: 'Hello',
-      component: Hello
+      path: '/my',
+      name: '个人中心',
+      component: my
     },
     {
-      path: '/page1',
-      name: 'page1',
-      component: page1
+      path: '/video-class',
+      name: '视频列表',
+      component: videoClass
+    },
+    {
+      path: '/questions',
+      name: '题库',
+      component: Questions
     }
   ]
 })
