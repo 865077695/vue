@@ -1,10 +1,8 @@
 <template>
   <div class="panel-1">
-    <img src="../../assets/img/banner.jpg" alt="">
-    <!--<img :src="imgSrc">-->
     <slot name="img"></slot>
     <p class="panel-title">{{ title }}</p>
-    <p class="price">¥ <span>{{ price }}</span></p>
+    <slot name="count"></slot>
   </div>
 </template>
 
@@ -26,7 +24,11 @@
 </script>
 
 <style scoped>
-  img{width:100%;}
-  .panel-title{font-size: 12px;padding-top: 10px;}
-  .price{color:#e64340;}
+  .panel-1{padding: 5px 0;}
+  img{width:100%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;}
+  .panel-title{font-size: 12px;padding-top: 0px;}
+  .count{color:#e64340;font-size: 12px;}
 </style>

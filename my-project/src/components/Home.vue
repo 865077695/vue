@@ -1,7 +1,7 @@
 <template>
   <div class="home">
+    <!--幻灯片-->
     <div>
-
       <swiper auto loop :aspect-ratio="300/800">
         <swiper-item v-for="(item,index) in list" :key="index">
           <a :href="item.url"><img class="swiper-img" :src="item.img">
@@ -9,6 +9,7 @@
         </swiper-item>
       </swiper>
     </div>
+    <!--快速入口-->
     <div>
       <grid :rows="4">
         <grid-item v-for="i in item" :key="i">
@@ -25,18 +26,39 @@
         </grid-item>
       </grid>
     </div>
-
-    <div class="hot-class">
-      <span class="hot-class-title"><i class="iconfont icon-shuxian"></i>  热门课程</span>
-
-      <div class="hot-class-items">
-        <div class="panel" v-for="(panel,index) in panelList" :key="index">
+    <!--热门课程-->
+    <div class="hot-class hr">
+      <span class="class-title"><i class="iconfont icon-shuxian"></i>  热门课程</span>
+      <div class="class-items">
+        <div class="panel" v-for="(panel,index) in hotClassList" :key="index">
           <panel-l1 :title="panel.title" :src="panel.imgSrc" :price="panel.price">
             <img slot="img" :src="panel.imgSrc" alt="">
+            <p class="count" slot="count">¥ <span>{{ panel.price }}</span></p>
           </panel-l1>
         </div>
       </div>
-
+      <div class="more-class">更多课程 ></div>
+    </div>
+    <!--免费好课-->
+    <div class="free-class hr">
+      <span class="class-title"><i class="iconfont icon-shuxian"></i> 免费好课</span>
+      <div class="class-items">
+        <div class="panel" v-for="(panel,index) in freeClassList" :key="index">
+          <panel-l1 :title="panel.title" :src="panel.imgSrc" :price="panel.price">
+            <img slot="img" :src="panel.imgSrc" alt="">
+            <p class="count" slot="count"><span>{{ panel.number }}</span> 人学习</p>
+          </panel-l1>
+        </div>
+      </div>
+      <div class="more-class">更多课程 ></div>
+    </div>
+    <!--考试攻略-->
+    <div class="test-cut">
+      <span class="class-title"><i class="iconfont icon-shuxian"></i> 考试攻略</span>
+      <div class="test-cut-content">
+        <img src="../assets/img/banner_1.jpg" alt="">
+        <p> &nbsp;2017年临床执业助理医师资格考试报考指南须知</p>
+      </div>
     </div>
   </div>
 
@@ -51,16 +73,21 @@
     {url: '//www.baidu.com', img: 'http://placeholder.qiniudn.com/800x300/FFEF7D/ffffff', title: '送你一辆车'},
     {url: '//www.baidu.com', img: 'http://placeholder.qiniudn.com/800x300/8AEEB1/ffffff', title: '送你一次旅行'}
   ]
-  // panel-l1数据
-  const panelList = [
+  // hot-class-list
+  const hotClassList = [
     {imgSrc: './static/img/banner.jpg', title: '2017中医执业/助理精讲特色班', price: 650},
-    {imgSrc: './static/img/banner.jpg', title: '2017临床助理医师-1对1VIP保过班', price: 650},
-    {imgSrc: './static/img/banner.jpg', title: '2017临床执业医师-1对1VIP保过班', price: 650},
-    {imgSrc: './static/img/banner.jpg', title: '2017临床助理医师-实践技能班', price: 650},
-    {imgSrc: './static/img/banner.jpg', title: 'title', price: 660},
-    {imgSrc: './static/img/banner.jpg', title: 'title', price: 680}
+    {imgSrc: './static/img/banner.jpg', title: '2017临床助理医师-1对1VIP保过班', price: 660},
+    {imgSrc: './static/img/banner.jpg', title: '2017临床执业医师-1对1VIP保过班', price: 230},
+    {imgSrc: './static/img/banner.jpg', title: '2017临床助理医师-实践技能班', price: 199}
   ]
 
+  // free-class-list
+  const freeClassList = [
+    {imgSrc: './static/img/banner.jpg', title: '2017中医执业/助理精讲特色班', number: 650},
+    {imgSrc: './static/img/banner.jpg', title: '2017临床助理医师-1对1VIP保过班', number: 1111},
+    {imgSrc: './static/img/banner.jpg', title: '2017临床执业医师-1对1VIP保过班', number: 2222},
+    {imgSrc: './static/img/banner.jpg', title: '2017临床助理医师-实践技能班', number: 3333}
+  ]
   export default {
     name: 'Home',
     components: {Swiper, SwiperItem, Grid, GridItem, panelL1},
@@ -78,7 +105,8 @@
           {label: '累计练题', icon: 'icon-ttl-fill', href: 'LJLT'},
           {label: '看课时长', icon: 'icon-video', href: 'KKSC'}
         ],
-        panelList: panelList
+        hotClassList: hotClassList,
+        freeClassList: freeClassList
       }
     },
     methods: {
@@ -138,7 +166,7 @@
     border-bottom: 10px solid #eee
   }
 
-  .hot-class {
+  .hot-class,.free-class,.test-cut {
     text-align: left
   }
 
@@ -147,13 +175,26 @@
     font-size: 12px
   }
 
-  .hot-class-items{
+  .class-title {
+    line-height: 40px;
+  }
+
+  .class-items {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
   }
 
-  .panel{width:40%;}
+  .more-class{text-align: center;line-height: 40px;color:#9e9e9e;font-size:14px;}
+
+  .test-cut{position: relative;overflow: hidden;}
+  .test-cut-content img{width: 100%;float: left}
+  .test-cut-content p{position: absolute;bottom: 0;line-height: 26px;background: rgba(0,0,0,.3);color:#fff;width: 100%;font-size: 12px;}
+
+  .panel {
+    width: 40%;
+  }
+
   ul {
     list-style-type: none;
     padding: 0;
