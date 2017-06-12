@@ -1,5 +1,5 @@
 <template>
-  <div class="my-center">
+  <div class="my-center root">
     <div class="shop hr">
       <p><i class="iconfont icon-yinhang"> </i> 我的订单</p> <span style="color:#9e9e9e">|</span>
       <p><i class="iconfont icon-youhuiquan"></i> 我的优惠券</p>

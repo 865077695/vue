@@ -12,40 +12,38 @@ import store from '@/store'
 
 Vue.use(Router)
 
+const routerList = [
+  {path: '*', redirect: '/Home', number: 0}, // 设置任意路径时跳转至home
+  {path: '/Home', name: '首页', component: Home, number: 1},
+  {path: '/my', name: '个人中心', component: my, number: 4},
+  {path: '/video-class', name: '视频列表', component: videoClass, number: 2},
+  {path: '/questions', name: '题库', component: Questions, number: 3}
+]
+
 const router = new Router({
-  routes: [
-    // 设置任意路径时跳转至home
-    {path: '*', redirect: '/Home'},
-    {
-      path: '/Home',
-      name: '首页',
-      component: Home
-    },
-    {
-      path: '/my',
-      name: '个人中心',
-      component: my
-    },
-    {
-      path: '/video-class',
-      name: '视频列表',
-      component: videoClass
-    },
-    {
-      path: '/questions',
-      name: '题库',
-      component: Questions
-    }
-  ]
+  routes: routerList
 })
 
 router.beforeEach(function (to, from, next) {
   // 当路由开始之前，触发state的updateLoadingStatus，并传入参数isLoading
-  store.commit('updateLoadingStatus', {isLoading: true})
+  var a = routerList.filter(function (item, idx) {
+    if (to.name === item.name) {
+      return true
+    }
+  })
+  var b = routerList.filter(function (item, idx) {
+    if (from.name === item.name) {
+      return true
+    }
+  })
+  if (b[0]) {
+    var number = a[0].number - b[0].number
+  }
+  store.commit('directionChange', {direction: number})
   next()
 })
 router.afterEach(function (to) {
-  console.log(to.name)
-  store.commit('updateLoadingStatus', {isLoading: false, title: to.name})
+  // console.log(to.name)
+  store.commit('directionChange', {direction: 0})
 })
 export default router

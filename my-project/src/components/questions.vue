@@ -1,5 +1,5 @@
 <template>
-  <div class="question">
+  <div class="question root">
     <div class="box">
       <div class="content1">
         <div class="content1-left">

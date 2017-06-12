@@ -1,7 +1,9 @@
 <template>
   <div class="panel-1">
-    <slot name="img"></slot>
-    <p class="panel-title">{{ title }}</p>
+    <slot name="img">
+      <!--<img :src="panel.imgSrc" alt="">-->
+    </slot>
+    <p class="panel-title">{{ panel.title }}</p>
     <slot name="count"></slot>
   </div>
 </template>
@@ -10,8 +12,8 @@
   export default {
     name: 'panel-l1',
     props: {
-      title: {
-        type: String,
+      panel: {
+        type: Object,
         required: true
       }
     }

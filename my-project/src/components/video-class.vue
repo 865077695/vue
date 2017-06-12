@@ -1,5 +1,5 @@
 <template>
-  <div class="page1">
+  <div class="page1 root">
     <div class="panel" v-for="(panel,index) in videoList" :key="index">
       <panel-l2 :imgSrc="panel.imgSrc" :title="panel.title" :descp="panel.descp" :startTime="panel.startTime"
                 :endTime="panel.endTime" :price="panel.price" :number="panel.number"></panel-l2>

@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home root">
     <!--幻灯片-->
     <div>
       <swiper auto loop :aspect-ratio="300/800">
@@ -31,8 +31,8 @@
       <span class="class-title"><i class="iconfont icon-shuxian"></i>  热门课程</span>
       <div class="class-items">
         <div class="panel" v-for="(panel,index) in hotClassList" :key="index">
-          <panel-l1 :title="panel.title" :src="panel.imgSrc" :price="panel.price">
-            <img slot="img" :src="panel.imgSrc" alt="">
+          <panel-l1 :panel="panel">
+            <img slot="img" :src="panel.imgSrc">
             <p class="count" slot="count">¥ <span>{{ panel.price }}</span></p>
           </panel-l1>
         </div>
@@ -44,8 +44,7 @@
       <span class="class-title"><i class="iconfont icon-shuxian"></i> 免费好课</span>
       <div class="class-items">
         <div class="panel" v-for="(panel,index) in freeClassList" :key="index">
-          <panel-l1 :title="panel.title" :src="panel.imgSrc" :price="panel.price">
-            <img slot="img" :src="panel.imgSrc" alt="">
+          <panel-l1 :panel="panel">
             <p class="count" slot="count"><span>{{ panel.number }}</span> 人学习</p>
           </panel-l1>
         </div>
@@ -65,8 +64,10 @@
 </template>
 
 <script>
+  import axios from 'axios'
   import {Swiper, SwiperItem, Grid, GridItem} from 'vux'
   import panelL1 from '@/components/cell/panel-l1'
+  import banner from '@/assets/img/banner.jpg'  // 引入图片，这样图片路径可以被webpack编译，但是这样就要写好多个了
   // swiper基础数据
   const imgList = [
     {url: '//www.baidu.com', img: 'http://placeholder.qiniudn.com/800x300/FF3B3B/ffffff', title: '送你一朵花'},
@@ -75,7 +76,7 @@
   ]
   // hot-class-list
   const hotClassList = [
-    {imgSrc: './static/img/banner.jpg', title: '2017中医执业/助理精讲特色班', price: 650},
+    {imgSrc: banner, title: '2017中医执业/助理精讲特色班', price: 650},
     {imgSrc: './static/img/banner.jpg', title: '2017临床助理医师-1对1VIP保过班', price: 660},
     {imgSrc: './static/img/banner.jpg', title: '2017临床执业医师-1对1VIP保过班', price: 230},
     {imgSrc: './static/img/banner.jpg', title: '2017临床助理医师-实践技能班', price: 199}
@@ -88,9 +89,10 @@
     {imgSrc: './static/img/banner.jpg', title: '2017临床执业医师-1对1VIP保过班', number: 2222},
     {imgSrc: './static/img/banner.jpg', title: '2017临床助理医师-实践技能班', number: 3333}
   ]
+
   export default {
     name: 'Home',
-    components: {Swiper, SwiperItem, Grid, GridItem, panelL1},
+    components: {Swiper, SwiperItem, Grid, GridItem, panelL1, axios, banner},
     data () {
       return {
         imgSrc: '123',
@@ -166,7 +168,7 @@
     border-bottom: 10px solid #eee
   }
 
-  .hot-class,.free-class,.test-cut {
+  .hot-class, .free-class, .test-cut {
     text-align: left
   }
 
@@ -185,11 +187,32 @@
     justify-content: space-around;
   }
 
-  .more-class{text-align: center;line-height: 40px;color:#9e9e9e;font-size:14px;}
+  .more-class {
+    text-align: center;
+    line-height: 40px;
+    color: #9e9e9e;
+    font-size: 14px;
+  }
 
-  .test-cut{position: relative;overflow: hidden;}
-  .test-cut-content img{width: 100%;float: left}
-  .test-cut-content p{position: absolute;bottom: 0;line-height: 26px;background: rgba(0,0,0,.3);color:#fff;width: 100%;font-size: 12px;}
+  .test-cut {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .test-cut-content img {
+    width: 100%;
+    float: left
+  }
+
+  .test-cut-content p {
+    position: absolute;
+    bottom: 0;
+    line-height: 26px;
+    background: rgba(0, 0, 0, .3);
+    color: #fff;
+    width: 100%;
+    font-size: 12px;
+  }
 
   .panel {
     width: 40%;

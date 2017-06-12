@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<my-component :a="aaa" @updaate:a="val=>aaa=val"></my-component>
+</div>
+<script src="../src/lib/vue.js"></script>
+<script>
+Vue.component('my-component',{
+    props:["a"],
+    template:'<div @click="changeA">component---{{ a }}</div>',
+    data: function(){
+        return {
+
+        }
+    },
+    methods : {
+//        changeA : function(){   //不允许在组件内修改通过prop传入的值，也就是这个方法执行时会报错
+//            this.a = 'bbb'
+//        }
+        changeA : function(){
+            this.$emit('updaate:a','ccc')
+        }
+    }
+})
+
+    new Vue({
+        el:'#app',
+        data:{
+            aaa:'asdasd'
+        },
+        methods:{
+            newA (vall) {
+                return vall
+            }
+        }
+    })
+</script>
+</body>
+</html>

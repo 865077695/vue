@@ -1,11 +1,14 @@
 <template>
   <div id="app">
+
     <!--顶部页面标题-->
-    <p class="title">{{ routerTitle }}</p>
+    <p class="title">{{ routerTitle }}{{setDirection}}</p>
     <!--路由加载动画-->
     <loading v-model="isLoading" loading="false"></loading>
     <!--路由容器-->
-    <router-view></router-view>
+    <transition name="bounce">
+      <router-view></router-view>
+    </transition>
     <!--底部菜单选项-->
     <div class="bottom-nav">
       <tabbar>
@@ -30,7 +33,6 @@
     </div>
   </div>
 </template>
-
 <script>
   // 引入路由
   import router from '@/router/index'
@@ -56,6 +58,13 @@
       },
       routerTitle () {
         return this.$store.state.title
+      },
+      setDirection () {
+        if (this.$store.state.direction) {
+          return String(this.$store.state.direction)
+        } else {
+          return 'a'
+        }
       }
     },
     methods: {
@@ -73,6 +82,8 @@
   @import '~vux/src/styles/reset.less';
   /*引入阿里字体图标*/
   @import '//at.alicdn.com/t/font_479ynf1sb57b9.css';
+  /*引入animate动画库*/
+  @import './assets/css/animate.min.css';
 
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -89,6 +100,12 @@
     color: #fff;
   }
 
+  .root {
+    position: absolute;
+    width: 100%;
+    background: #fff;
+  }
+
   a {
     text-decoration: none;
   }
@@ -103,5 +120,28 @@
   /*字体图标大小*/
   .iconfont {
     font-size: 24px;
+  }
+
+  .bounce-enter-active {
+    animation: bounce-in .5s;
+  }
+  .bounce-leave-active {
+    animation: bounce-out .5s;
+  }
+  @keyframes bounce-in {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes bounce-out {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
   }
 </style>
