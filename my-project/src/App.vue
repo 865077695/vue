@@ -1,8 +1,7 @@
 <template>
   <div id="app">
-
     <!--顶部页面标题-->
-    <p class="title">{{ routerTitle }}{{setDirection}}</p>
+    <p class="title">{{ routerTitle }}</p>
     <!--路由加载动画-->
     <loading v-model="isLoading" loading="false"></loading>
     <!--路由容器-->
@@ -58,14 +57,15 @@
       },
       routerTitle () {
         return this.$store.state.title
-      },
-      setDirection () {
-        if (this.$store.state.direction) {
-          return String(this.$store.state.direction)
-        } else {
-          return 'a'
-        }
       }
+//      ,
+//      setDirection () {
+//        if (this.$store.state.direction) {
+//          return String(this.$store.state.direction)
+//        } else {
+//          return 'a'
+//        }
+//      }
     },
     methods: {
       onItemClick: function (param) {
@@ -104,6 +104,7 @@
     position: absolute;
     width: 100%;
     background: #fff;
+    box-sizing: border-box;
   }
 
   a {
@@ -130,18 +131,18 @@
   }
   @keyframes bounce-in {
     0% {
-      transform: scale(0);
+      transform: translateY(-100%) scale(0);
     }
     100% {
-      transform: scale(1);
+      transform: translateY(0) scale(1);
     }
   }
   @keyframes bounce-out {
     0% {
-      transform: scale(1);
+      transform: translateY(0) scale(1);
     }
     100% {
-      transform: scale(0);
+      transform: translateY(100%) scale(0);
     }
   }
 </style>

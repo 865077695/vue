@@ -26,24 +26,28 @@ const router = new Router({
 
 router.beforeEach(function (to, from, next) {
   // 当路由开始之前，触发state的updateLoadingStatus，并传入参数isLoading
-  var a = routerList.filter(function (item, idx) {
-    if (to.name === item.name) {
-      return true
-    }
+  // var a = routerList.filter(function (item, idx) {
+  //   if (to.name === item.name) {
+  //     return true
+  //   }
+  // })
+  // var b = routerList.filter(function (item, idx) {
+  //   if (from.name === item.name) {
+  //     return true
+  //   }
+  // })
+  // if (b[0]) {
+  //   var number = a[0].number - b[0].number
+  // }
+  // store.commit('directionChange', {direction: number})
+  console.log(to.name)
+  store.commit('updateLoadingStatus', {
+    isLoading: true,
+    title: to.name
   })
-  var b = routerList.filter(function (item, idx) {
-    if (from.name === item.name) {
-      return true
-    }
-  })
-  if (b[0]) {
-    var number = a[0].number - b[0].number
-  }
-  store.commit('directionChange', {direction: number})
   next()
 })
 router.afterEach(function (to) {
-  // console.log(to.name)
-  store.commit('directionChange', {direction: 0})
+  store.commit('updateLoadingStatus', {isLoading: false, title: to.name})
 })
 export default router
