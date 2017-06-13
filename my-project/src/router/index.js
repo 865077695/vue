@@ -40,7 +40,6 @@ router.beforeEach(function (to, from, next) {
   //   var number = a[0].number - b[0].number
   // }
   // store.commit('directionChange', {direction: number})
-  console.log(to.name)
   store.commit('updateLoadingStatus', {
     isLoading: true,
     title: to.name

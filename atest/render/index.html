@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>render</title>
+</head>
+<body>
+<div id="app">
+    <anchored-heading :level="a">Hello World!</anchored-heading>
+</div>
+<!--<script type="text/x-template" id="anchored-heading-template">-->
+    <!--<div>-->
+        <!--<h1 v-if="level===1"><slot></slot></h1>-->
+        <!--<h2 v-if="level===2"><slot></slot></h2>-->
+        <!--<h3 v-if="level===3"><slot></slot></h3>-->
+        <!--<h4 v-if="level===4"><slot></slot></h4>-->
+        <!--<h5 v-if="level===5"><slot></slot></h5>-->
+        <!--<h6 v-if="level===6"><slot></slot></h6>-->
+    <!--</div>-->
+<!--</script>-->
+<script src="../src/lib/vue.js"></script>
+<script>
+//    Vue.component('anchored-heading',{
+//        template: '#anchored-heading-template',
+//        props: {
+//            level: {
+//                type: Number,
+//                required: true
+//            }
+//        }
+//    })
+//使用render重写组件
+Vue.component('anchored-heading',{
+    render: function(createElement){
+        return createElement(
+            'h'+this.level,     //tag name标签名称
+            this.$slots.default //子组件中的阵列
+        )
+    },
+    props: {
+        level: {
+            required: true,
+            type: Number
+        }
+    }
+})
+    var app = new Vue({
+        el:'#app',
+        data: {a:1}
+    })
+
+    console.log(app.$slots.default)
+</script>
+</body>
+</html>
