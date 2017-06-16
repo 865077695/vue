@@ -32,7 +32,6 @@
       <div class="class-items">
         <div class="panel" v-for="(panel,index) in hotClassList" :key="index">
           <panel-l1 :panel="panel">
-            <img slot="img" :src="panel.imgSrc">
             <p class="count" slot="count">¥ <span>{{ panel.price }}</span></p>
           </panel-l1>
         </div>
@@ -45,7 +44,6 @@
       <div class="class-items">
         <div class="panel" v-for="(panel,index) in freeClassList" :key="index">
           <panel-l1 :panel="panel">
-            <img slot="img" :src="panel.imgSrc">
             <p class="count" slot="count"><span>{{ panel.number }}</span> 人学习</p>
           </panel-l1>
         </div>

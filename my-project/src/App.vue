@@ -28,6 +28,11 @@
           <!--<img slot="icon" src="./assets/1.png">-->
           <span slot="label">我的</span>
         </tabbar-item>
+        <tabbar-item :icon-class="'iconfont icon-my'" link="/test">
+          <i slot="icon"></i>
+          <!--<img slot="icon" src="./assets/1.png">-->
+          <span slot="label">test</span>
+        </tabbar-item>
       </tabbar>
     </div>
   </div>
