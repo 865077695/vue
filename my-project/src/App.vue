@@ -5,9 +5,9 @@
     <!--路由加载动画-->
     <loading v-model="isLoading" loading="false"></loading>
     <!--路由容器-->
-    <transition name="bounce">
+    <!--<transition name="bounce">-->
       <router-view></router-view>
-    </transition>
+    <!--</transition>-->
     <!--底部菜单选项-->
     <div class="bottom-nav">
       <tabbar>
