@@ -64,7 +64,7 @@ const webpackConfig = {
   }
 }
 module.exports = vuxLoader.merge(webpackConfig, {
-  plugins: ['vux-ui']
+  plugins: ['vux-ui', 'duplicate-style'] // 优化打包时重复样式
 })
 
 function resolve (dir) {

@@ -14,6 +14,7 @@ export default new Vuex.Store({
   },
   mutations: {
     // 这是注册的一个突变方法，通过在组件的methods里触发这个方法来执行相关数据改变
+    // 这个是一个更新顶部标题的方法
     updateLoadingStatus (state, payload) {
       state.isLoading = payload.isLoading
       state.title = payload.title
